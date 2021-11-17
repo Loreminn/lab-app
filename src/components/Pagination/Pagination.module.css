@@ -1,0 +1,17 @@
+.Pagination {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.Pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    margin: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+

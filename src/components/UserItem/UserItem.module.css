@@ -1,0 +1,25 @@
+.UserItem {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    color: gray;
+    margin-top: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.UserItem div {
+    max-width: 100px;
+}
+
+.UserItemIcon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.UserItemName {
+    color: blue;
+    font-weight: bold;
+    font-size: 20px;
+}

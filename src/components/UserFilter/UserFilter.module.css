@@ -1,0 +1,25 @@
+.FilterContainer {
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.FilterInput {
+    font-family: Roboto, serif;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fafafa;
+    border: 1px solid #fafafa;
+    margin-bottom: 25px;
+}
+
+.FilterIcon {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+

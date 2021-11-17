@@ -1,0 +1,21 @@
+.SortContainer {
+    margin-top: 100px;
+    color: gray;
+}
+
+.SortItem {
+    cursor: pointer;
+    margin-left: 10px;
+    border-bottom: 1px dashed gray;
+    user-select: none;
+}
+
+.SortItemActive {
+    color: black;
+    border-bottom: 1px solid black;
+}
+
+.active {
+    color: black;
+    border-bottom: 1px solid black;
+}

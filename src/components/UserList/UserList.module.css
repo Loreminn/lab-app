@@ -1,0 +1,18 @@
+.UserListContainer {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.UserListTitles {
+    display: flex;
+    color: gray;
+    font-size: 16px;
+    border-bottom: 1px solid lightgray;
+}
+
+.UserListTitle {
+    margin-right: 350px;
+    margin-bottom: 25px;
+}
