@@ -21,7 +21,7 @@ const titles: string[] = [
     'Рейтинг'
 ];
 
-const UserList: React.FC<UserListProps> = ({page, filter, sort}) => {
+const UserList: React.FC<UserListProps> = ({filter, sort, page}) => {
     const {users, error, loading} = useTypedSelector(state => state.user);
     const sortedAndFiltered = useUsers(users, filter, sort);
     const {setTotalPages} = useActions();

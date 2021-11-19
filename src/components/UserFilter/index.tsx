@@ -13,13 +13,14 @@ interface UserFilterProps {
 
 const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, clearFilterQuery}) => {
     const {setTotalPages} = useActions();
-    const {users} = useTypedSelector(state => state.user)
+    const {users} = useTypedSelector(state => state.user);
 
     useEffect(() => {
-        if(!filterQuery) {
+        if (!filterQuery) {
             setTotalPages(users.length);
         }
     }, [filterQuery]);
+
 
     return (
         <div className={classes.FilterContainer}>

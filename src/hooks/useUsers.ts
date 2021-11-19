@@ -48,5 +48,5 @@ export const useUsers = (users: IUser[], query: string, sort: SortInterface) => 
         );
         setTotalPages(filteredUsers?.length);
         return filteredUsers;
-    }, [query, users]);
+    }, [query, users, sort]);
 };
