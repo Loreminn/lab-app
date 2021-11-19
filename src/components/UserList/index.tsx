@@ -6,6 +6,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Loader from '../Loader/Loader';
 import { useUsers } from '../../hooks/useUsers';
 import { SortInterface } from '../UserSort';
+import { useActions } from '../../hooks/useActions';
 
 interface UserListProps {
     page: number;
@@ -23,14 +24,19 @@ const titles: string[] = [
 const UserList: React.FC<UserListProps> = ({page, filter, sort}) => {
     const {users, error, loading} = useTypedSelector(state => state.user);
     const sortedAndFiltered = useUsers(users, filter, sort);
+    const {setTotalPages} = useActions();
 
     const indexOfLastUser = page * 5;
     const indexOfFirstUser = indexOfLastUser - 5;
     const currentUsers = sortedAndFiltered?.slice(indexOfFirstUser, indexOfLastUser);
 
+    useEffect(() => {
+        setTotalPages(users.length);
+    }, [users]);
+
     if (loading) {
         return (
-            <Loader />
+            <Loader/>
         );
     }
 

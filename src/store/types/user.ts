@@ -45,4 +45,9 @@ interface SetTotalPages {
     payload: number;
 }
 
-export type UserAction = FetchUserAction | FetchUserErrorAction | FetchUserSuccessAction | DeleteUserById | SetTotalPages;
+export type UserAction =
+    FetchUserAction
+    | FetchUserErrorAction
+    | FetchUserSuccessAction
+    | DeleteUserById
+    | SetTotalPages;

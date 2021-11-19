@@ -1,7 +1,9 @@
-import React  from 'react';
+import React, { useEffect } from 'react';
 import classes from './UserFilter.module.css';
 
 import filterIcon from '../../assets/pngwing.com.png';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface UserFilterProps {
     filterQuery: string;
@@ -10,6 +12,15 @@ interface UserFilterProps {
 }
 
 const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, clearFilterQuery}) => {
+    const {setTotalPages} = useActions();
+    const {users} = useTypedSelector(state => state.user)
+
+    useEffect(() => {
+        if(!filterQuery) {
+            setTotalPages(users.length);
+        }
+    }, [filterQuery]);
+
     return (
         <div className={classes.FilterContainer}>
             <div>

@@ -12,7 +12,12 @@ export const userReducer = (state = initialState, action: UserAction): UserState
         case UserActionTypes.FETCH_USERS:
             return {loading: true, users: [], error: null, totalPages: 0};
         case UserActionTypes.FETCH_USERS_SUCCESS:
-            return {loading: false, users: action.payload, error: null, totalPages: state.totalPages};
+            return {
+                loading: false,
+                users: action.payload,
+                error: null,
+                totalPages: state.totalPages
+            };
         case UserActionTypes.FETCH_USERS_ERROR:
             return {loading: false, users: [], error: action.payload, totalPages: 0};
         case UserActionTypes.SET_TOTAL_PAGES:

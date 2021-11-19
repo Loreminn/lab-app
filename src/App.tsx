@@ -65,7 +65,7 @@ const App: React.FC = () => {
                         clearFilterQuery={clearFilter}/>
             <UserSort clickSortDateHandler={clickSortDateHandler}
                       clickSortRatingHandler={clickSortRatingHandler} sortType={sort.type}/>
-            <UserList sort={sort} filter={filter} page={page} />
+            <UserList sort={sort} filter={filter} page={page}/>
             <Pagination page={page} changePage={changePage}/>
         </div>
     );
