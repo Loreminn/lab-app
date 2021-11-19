@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Pagination.module.css';
 import { usePagination } from '../../hooks/usePagination';
 import classNames from 'classnames';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface PaginationProps {
     page: number;
@@ -9,7 +10,9 @@ interface PaginationProps {
 }
 
 const Pagination: React.FC<PaginationProps> = ({page, changePage}) => {
-    const pagesArray = usePagination(5);
+    const {totalPages} = useTypedSelector(state => state.user);
+
+    const pagesArray = usePagination(totalPages);
 
     return (
         <div className={classes.Pagination}>

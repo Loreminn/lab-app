@@ -3,15 +3,16 @@ import { IUser, UserAction, UserActionTypes } from '../types/user';
 import axios from 'axios';
 import { getPageCount } from '../../utils/pages';
 
-export const fetchUsers = (page: number = 1) => {
+export const fetchUsers = () => {
     return async (dispatch: Dispatch<UserAction>) => {
         try {
             dispatch({type: UserActionTypes.FETCH_USERS});
-            const response = await axios.get<IUser[]>('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users', {
-                params: {
-                    page: page,
-                    limit: 5
-                }
+
+            const response = await axios.get<IUser[]>('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users');
+
+            dispatch({
+                type: UserActionTypes.SET_TOTAL_PAGES,
+                payload: getPageCount(response.data.length)
             });
 
             dispatch({type: UserActionTypes.FETCH_USERS_SUCCESS, payload: response.data});
@@ -32,8 +33,8 @@ export const deleteUser = (id: string) => {
 
 // Обычно я пагинацию делал через свойство ответа от запроса: response.headers['x-total-count'],
 // но в api оно не приходит, поэтому захардкодил значение
-export const setTotalPages = () => {
+export const setTotalPages = (count: number = 25) => {
     return async (dispatch: Dispatch<UserAction>) => {
-        dispatch({type: UserActionTypes.SET_TOTAL_PAGES, payload: getPageCount(25)});
+        dispatch({type: UserActionTypes.SET_TOTAL_PAGES, payload: getPageCount(count)});
     };
 };

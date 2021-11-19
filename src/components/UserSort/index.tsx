@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import classNames from 'classnames';
 import classes from './UserSort.module.css';
@@ -9,12 +9,12 @@ interface UserSortProps {
     sortType: SortType;
 }
 
-export type SortType = 'date' | 'rating';
+export type SortType = 'registration_date' | 'rating';
 
 export interface SortInterface {
     type: SortType;
-    ascending: boolean;
-    descending: boolean;
+    asc: boolean;
+    desc: boolean;
 }
 
 const UserSort: React.FC<UserSortProps> = ({clickSortDateHandler, clickSortRatingHandler, sortType}) => {
@@ -24,7 +24,7 @@ const UserSort: React.FC<UserSortProps> = ({clickSortDateHandler, clickSortRatin
             <div style={{display: 'flex'}}>
                 Сортировка:
                 <div
-                    className={classNames(classes.SortItem, {'sort-item-active': sortType === 'date'})}
+                    className={classNames(classes.SortItem, {'sort-item-active': sortType === 'registration_date'})}
                     onClick={clickSortDateHandler}
                 >
                     Дата регистрации
