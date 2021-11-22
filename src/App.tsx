@@ -61,12 +61,26 @@ const App: React.FC = () => {
     return (
         <div className="container">
             <h3 className="title">Список пользователей</h3>
-            <UserFilter filterQuery={filter} setFilterQuery={setFilter}
-                        clearFilterQuery={clearFilter}/>
-            <UserSort clickSortDateHandler={clickSortDateHandler}
-                      clickSortRatingHandler={clickSortRatingHandler} sortType={sort.type}/>
-            <UserList sort={sort} filter={filter} page={page}/>
-            <Pagination page={page} changePage={changePage}/>
+            <UserFilter
+                filterQuery={filter}
+                setFilterQuery={setFilter}
+                clearFilterQuery={clearFilter}
+            />
+            <UserSort
+                clickSortDateHandler={clickSortDateHandler}
+                clickSortRatingHandler={clickSortRatingHandler}
+                sortType={sort.type}
+            />
+            <UserList
+                sort={sort}
+                filter={filter}
+                page={page}
+                setPage={setPage}
+            />
+            <Pagination
+                page={page}
+                changePage={changePage}
+            />
         </div>
     );
 };

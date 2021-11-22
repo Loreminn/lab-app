@@ -6,13 +6,16 @@ import { IUser } from '../../store/types/user';
 import { formatDate } from '../../utils/dateFormat';
 import { useActions } from '../../hooks/useActions';
 import Modal from '../Modal';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface UserItemProps extends IUser {
+
 }
 
 const UserItem: React.FC<UserItemProps> = ({id, username, email, rating, registration_date}) => {
     const [modalActive, setModalActive] = useState<boolean>(false);
-    const {deleteUser} = useActions();
+    const {users} = useTypedSelector(state => state.user);
+    const {deleteUser, setTotalPages} = useActions();
 
     const closeModalHandler = () => {
         setModalActive(false);
@@ -21,6 +24,7 @@ const UserItem: React.FC<UserItemProps> = ({id, username, email, rating, registr
     const deleteUserHandler = () => {
         setModalActive(false);
         deleteUser(id);
+        setTotalPages(users.length - 1);
     };
 
     return (

@@ -12,6 +12,7 @@ interface UserListProps {
     page: number;
     filter: string;
     sort: SortInterface;
+    setPage: (n: number) => void;
 }
 
 const titles: string[] = [
@@ -21,7 +22,7 @@ const titles: string[] = [
     'Рейтинг'
 ];
 
-const UserList: React.FC<UserListProps> = ({filter, sort, page}) => {
+const UserList: React.FC<UserListProps> = ({filter, sort, page, setPage}) => {
     const {users, error, loading} = useTypedSelector(state => state.user);
     const sortedAndFiltered = useUsers(users, filter, sort);
     const {setTotalPages} = useActions();
@@ -32,6 +33,12 @@ const UserList: React.FC<UserListProps> = ({filter, sort, page}) => {
 
     useEffect(() => {
         setTotalPages(users.length);
+    }, []);
+
+    useEffect(() => {
+        if (currentUsers && currentUsers.length === 0 && page !== 1) {
+            setPage(page - 1);
+        }
     }, [users]);
 
     if (loading) {

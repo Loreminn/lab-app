@@ -12,14 +12,14 @@ export const fetchUsers = () => {
 
             dispatch({
                 type: UserActionTypes.SET_TOTAL_PAGES,
-                payload: getPageCount(response.data.length)
+                payload: getPageCount(response.data.length),
             });
 
             dispatch({type: UserActionTypes.FETCH_USERS_SUCCESS, payload: response.data});
         } catch (e) {
             dispatch({
                 type: UserActionTypes.FETCH_USERS_ERROR,
-                payload: 'Произошла ошибка при загрузке пользователей'
+                payload: 'Произошла ошибка при загрузке пользователей',
             });
         }
     };
