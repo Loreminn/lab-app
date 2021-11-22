@@ -65,6 +65,7 @@ const App: React.FC = () => {
                 filterQuery={filter}
                 setFilterQuery={setFilter}
                 clearFilterQuery={clearFilter}
+                setPage={setPage}
             />
             <UserSort
                 clickSortDateHandler={clickSortDateHandler}

@@ -9,9 +9,10 @@ interface UserFilterProps {
     filterQuery: string;
     setFilterQuery: (query: string) => void;
     clearFilterQuery: () => void;
+    setPage: (n: number) => void;
 }
 
-const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, clearFilterQuery}) => {
+const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, clearFilterQuery, setPage}) => {
     const {setTotalPages} = useActions();
     const {users} = useTypedSelector(state => state.user);
 
@@ -20,6 +21,11 @@ const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, cle
             setTotalPages(users.length);
         }
     }, [filterQuery]);
+
+    const changeInputHandler = (e:  React.ChangeEvent<HTMLInputElement>) => {
+        setFilterQuery(e.target.value)
+        setPage(1);
+    }
 
 
     return (
@@ -30,7 +36,7 @@ const UserFilter: React.FC<UserFilterProps> = ({filterQuery, setFilterQuery, cle
                     type="text"
                     placeholder="Поиск по имени или e-mail"
                     value={filterQuery}
-                    onChange={e => setFilterQuery(e.target.value)}
+                    onChange={changeInputHandler}
                 />
             </div>
             <div>
